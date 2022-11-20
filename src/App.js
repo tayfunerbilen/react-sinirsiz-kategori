@@ -65,10 +65,12 @@ function App() {
 			return []
 		}
 		const category = categories.find(c => c.id === parent)
-		return [
-			category,
-			category.parent !== 0 && findCategories(category.parent)
-		]
+		if (category) {
+			return [
+				category,
+				category.parent !== 0 && findCategories(category.parent)
+			]
+		}
 	}
 	const getBreadcrumb = parent => {
 		return findCategories(parent).flat(Infinity).filter(Boolean).reverse()
