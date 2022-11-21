@@ -75,7 +75,6 @@ function App() {
 	const getBreadcrumb = parent => {
 		return findCategories(parent).flat(Infinity).filter(Boolean).reverse()
 	}
-	console.log(getBreadcrumb(9))
 
 	const breadcrumb = useMemo(() => getBreadcrumb(parent), [parent])
 
@@ -93,8 +92,12 @@ function App() {
 	}
 
 	const deleteCategory = id => {
-		setCategories(categories.filter(category => category.id !== id))
-	}
+		const childs = categories.filter(c => c.parent === id);
+		if(Array.isArray(childs) && childs.length > 0) {
+			childs.forEach(f => deleteCategory(f.id))
+		}  
+		setCategories(cate => cate.filter(c =>  c.id !== id));
+	};
 
 	const subCategoryHandle = category => {
 		setParent(category.id)
