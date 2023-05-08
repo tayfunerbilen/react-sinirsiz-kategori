@@ -109,7 +109,7 @@ function App() {
 			<form className="flex gap-x-4 mb-4" onSubmit={submitHandle}>
 				<input type="text" value={categoryName} onChange={e => setCategoryName(e.target.value)}
 							 className="border flex-1 border-gray-300 outline-none focus:border-indigo-600 h-10 px-4 rounded-md text-sm"
-							 placeholder="Kategori Adı"/>
+							 placeholder="Kategori Adı."/>
 				<button disabled={!categoryName} type="submit"
 								className="h-10 bg-indigo-600 text-white text-sm px-4 rounded-md disabled:opacity-50 disabled:pointerevents-none">Ekle
 				</button>
